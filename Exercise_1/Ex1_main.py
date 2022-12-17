@@ -1,21 +1,5 @@
 import matplotlib.pyplot as plt
-
-
-def get_data_from_file(file_name):
-    data_one = []
-    data_two = []
-
-    with open(file_name, 'r') as file:
-        for line in file:
-            values = []
-            mas_line = line.split(" ")
-            for elem in mas_line:
-                if elem != '':
-                    values.append(elem)
-            data_one.append(float(values[0]))
-            data_two.append(float(values[1]))
-
-    return data_one, data_two
+from MatStat import workWithFile
 
 
 # Выборочное среднее
@@ -69,7 +53,7 @@ def draw_histogram(data_one, data_two):
 if __name__ == '__main__':
     FILE_NAME = 'Ex1_DAT8.TXT'
 
-    data_one, data_two = get_data_from_file(FILE_NAME)
+    data_one, data_two = workWithFile.get_data_from_file_vertical(FILE_NAME)
 
     print('Выборочное среднее для первой выборки: ' + str(get_mean_data(data_one)))
     print('Выборочная дисперсия для первой выборки: ' + str(get_variance_data(data_one)))
